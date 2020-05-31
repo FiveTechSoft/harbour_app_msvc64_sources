@@ -90,9 +90,6 @@
     <ClCompile Include="harbour\sources\vm\garbage.c">
       <Filter>Source Files\vm</Filter>
     </ClCompile>
-    <ClCompile Include="harbinit.c">
-      <Filter>Source Files\vm</Filter>
-    </ClCompile>
     <ClCompile Include="harbour\sources\vm\hashes.c">
       <Filter>Source Files\vm</Filter>
     </ClCompile>
@@ -753,9 +750,6 @@
     <ClCompile Include="harbour\sources\rtl\strclear.c">
       <Filter>Source Files\rtl</Filter>
     </ClCompile>
-    <ClCompile Include="harbour\sources\rtl\strmatch.c">
-      <Filter>Source Files\rtl</Filter>
-    </ClCompile>
     <ClCompile Include="harbour\sources\rtl\strrepl.c">
       <Filter>Source Files\rtl</Filter>
     </ClCompile>
@@ -897,7 +891,28 @@
     <ClCompile Include="harbour\sources\3rd\zlib\zutil.c">
       <Filter>Source Files\3rd\zlib</Filter>
     </ClCompile>
-    <ClCompile Include="tscalar.c">
+    <ClCompile Include="harbour\sources\rtl\tscalar.c">
+      <Filter>Source Files\rtl</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\rtl\tclass.c">
+      <Filter>Source Files\rtl</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\rtl\tobject.c">
+      <Filter>Source Files\rtl</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\rtl\objfunc.c">
+      <Filter>Source Files\rtl</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\vm\harbinit.c">
+      <Filter>Source Files\vm</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\rtl\errsys.c">
+      <Filter>Source Files\rtl</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\rtl\alert.c">
+      <Filter>Source Files\rtl</Filter>
+    </ClCompile>
+    <ClCompile Include="harbour\sources\rtl\valtoexp.c">
       <Filter>Source Files\rtl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -907,6 +922,24 @@
       <Filter>Source Files\vm</Filter>
     </CustomBuild>
     <CustomBuild Include="harbour\sources\rtl\tscalar.prg">
+      <Filter>Source Files\rtl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\errsys.prg">
+      <Filter>Source Files\rtl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\tclass.prg">
+      <Filter>Source Files\rtl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\tobject.prg">
+      <Filter>Source Files\rtl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\objfunc.prg">
+      <Filter>Source Files\rtl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\alert.prg">
+      <Filter>Source Files\rtl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\valtoexp.prg">
       <Filter>Source Files\rtl</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -124,8 +124,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;hbpcre.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>C:\harbour_app_msvc64_sources\harbour\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,7 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="harbinit.c" />
     <ClCompile Include="harbour\sources\3rd\zlib\adler32.c" />
     <ClCompile Include="harbour\sources\3rd\zlib\compress.c" />
     <ClCompile Include="harbour\sources\3rd\zlib\crc32.c" />
@@ -189,6 +189,7 @@
     <ClCompile Include="harbour\sources\nulrdd\nulsys.c" />
     <ClCompile Include="harbour\sources\rtl\abs.c" />
     <ClCompile Include="harbour\sources\rtl\accept.c" />
+    <ClCompile Include="harbour\sources\rtl\alert.c" />
     <ClCompile Include="harbour\sources\rtl\ampm.c" />
     <ClCompile Include="harbour\sources\rtl\arc4.c" />
     <ClCompile Include="harbour\sources\rtl\at.c" />
@@ -224,6 +225,7 @@
     <ClCompile Include="harbour\sources\rtl\errapiu.c" />
     <ClCompile Include="harbour\sources\rtl\errint.c" />
     <ClCompile Include="harbour\sources\rtl\errintlo.c" />
+    <ClCompile Include="harbour\sources\rtl\errsys.c" />
     <ClCompile Include="harbour\sources\rtl\file.c" />
     <ClCompile Include="harbour\sources\rtl\filebuf.c" />
     <ClCompile Include="harbour\sources\rtl\filebufd.c" />
@@ -323,6 +325,7 @@
     <ClCompile Include="harbour\sources\rtl\natmsgu.c" />
     <ClCompile Include="harbour\sources\rtl\net.c" />
     <ClCompile Include="harbour\sources\rtl\netusr.c" />
+    <ClCompile Include="harbour\sources\rtl\objfunc.c" />
     <ClCompile Include="harbour\sources\rtl\oemansi.c" />
     <ClCompile Include="harbour\sources\rtl\oldbox.c" />
     <ClCompile Include="harbour\sources\rtl\oldclear.c" />
@@ -358,7 +361,6 @@
     <ClCompile Include="harbour\sources\rtl\strc.c" />
     <ClCompile Include="harbour\sources\rtl\strcase.c" />
     <ClCompile Include="harbour\sources\rtl\strclear.c" />
-    <ClCompile Include="harbour\sources\rtl\strmatch.c" />
     <ClCompile Include="harbour\sources\rtl\strrepl.c" />
     <ClCompile Include="harbour\sources\rtl\strtoexp.c" />
     <ClCompile Include="harbour\sources\rtl\strtran.c" />
@@ -367,10 +369,13 @@
     <ClCompile Include="harbour\sources\rtl\strzero.c" />
     <ClCompile Include="harbour\sources\rtl\stuff.c" />
     <ClCompile Include="harbour\sources\rtl\substr.c" />
+    <ClCompile Include="harbour\sources\rtl\tclass.c" />
+    <ClCompile Include="harbour\sources\rtl\tobject.c" />
     <ClCompile Include="harbour\sources\rtl\tone.c" />
     <ClCompile Include="harbour\sources\rtl\trace.c" />
     <ClCompile Include="harbour\sources\rtl\transfrm.c" />
     <ClCompile Include="harbour\sources\rtl\trim.c" />
+    <ClCompile Include="harbour\sources\rtl\tscalar.c" />
     <ClCompile Include="harbour\sources\rtl\tscalara.c" />
     <ClCompile Include="harbour\sources\rtl\tscalarb.c" />
     <ClCompile Include="harbour\sources\rtl\tscalarc.c" />
@@ -384,6 +389,7 @@
     <ClCompile Include="harbour\sources\rtl\tscalaru.c" />
     <ClCompile Include="harbour\sources\rtl\type.c" />
     <ClCompile Include="harbour\sources\rtl\val.c" />
+    <ClCompile Include="harbour\sources\rtl\valtoexp.c" />
     <ClCompile Include="harbour\sources\rtl\valtostr.c" />
     <ClCompile Include="harbour\sources\rtl\valtype.c" />
     <ClCompile Include="harbour\sources\rtl\version.c" />
@@ -408,6 +414,7 @@
     <ClCompile Include="harbour\sources\vm\extrap.c" />
     <ClCompile Include="harbour\sources\vm\fm.c" />
     <ClCompile Include="harbour\sources\vm\garbage.c" />
+    <ClCompile Include="harbour\sources\vm\harbinit.c" />
     <ClCompile Include="harbour\sources\vm\hashes.c" />
     <ClCompile Include="harbour\sources\vm\hashfunc.c" />
     <ClCompile Include="harbour\sources\vm\hvm.c" />
@@ -431,7 +438,6 @@
     <ClCompile Include="harbour\sources\vm\thread.c" />
     <ClCompile Include="harbour\sources\vm\vm.c" />
     <ClCompile Include="test.c" />
-    <ClCompile Include="tscalar.c" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="test.prg">
@@ -445,8 +451,8 @@
     <CustomBuild Include="harbour\sources\vm\harbinit.prg">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -456,8 +462,44 @@
     <CustomBuild Include="harbour\sources\rtl\tscalar.prg">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\errsys.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\tclass.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\tobject.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\objfunc.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\alert.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="harbour\sources\rtl\valtoexp.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include -o%(RelativeDir)%(Filename).c</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)%(RelativeDir)%(Filename).c</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
