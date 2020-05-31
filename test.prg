@@ -1,5 +1,5 @@
 function Main()
 
-   ? "Yes, its working"
+   ? "Saludos a todos"
 
 return nil
