@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -89,10 +89,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>c:\harbour_app_msvc64_sources\harbour\include;c:\harbour_app_msvc64_sources\glfw\include;c:\harbour_app_msvc64_sources\harbour\sources\3rd\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;imagehlp.lib;c:\harbour_app_msvc64_sources\glfw\lib\glew32.lib;c:\harbour_app_msvc64_sources\glfw\lib\hbgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -101,14 +103,16 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>c:\harbour_app_msvc64_sources\harbour\include;c:\harbour_app_msvc64_sources\glfw\include;c:\harbour_app_msvc64_sources\harbour\sources\3rd\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;imagehlp.lib;c:\harbour_app_msvc64_sources\glfw\lib\glad_gl.lib;c:\harbour_app_msvc64_sources\glfw\lib\glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,14 +121,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>c:\harbour\include;C:\harbour_app_msvc64_sources\harbour\sources\macro;C:\harbour_app_msvc64_sources\harbour\sources\3rd\zlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\harbour\include;C:\harbour_app_msvc64_sources\harbour\sources\macro;C:\harbour_app_msvc64_sources\harbour\sources\3rd\zlib;c:\harbour_app_msvc64_sources\glfw\include;c:\harbour_app_msvc64_sources\glfw\include\glad</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;hbpcre.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;hbpcre.lib;imagehlp.lib;c:\harbour_app_msvc64_sources\glfw\lib\glad_gl.lib;c:\harbour_app_msvc64_sources\glfw\lib\glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
       <AdditionalLibraryDirectories>C:\harbour_app_msvc64_sources\harbour\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -147,6 +152,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\harbour\contrib\hbwin\olecore.c" />
+    <ClCompile Include="..\harbour\contrib\hbwin\oleuuid.c" />
+    <ClCompile Include="..\harbour\contrib\hbwin\wapi_err.c" />
+    <ClCompile Include="..\harbour\contrib\hbwin\wapi_winuser_2.c" />
+    <ClCompile Include="..\harbour\contrib\hbwin\win_misc_1.c" />
+    <ClCompile Include="..\harbour\contrib\xhb\xhbolec.c" />
+    <ClCompile Include="..\harbour\contrib\xhb\xthrow.c" />
+    <ClCompile Include="glfw\source\context.c" />
+    <ClCompile Include="glfw\source\core.c" />
+    <ClCompile Include="glfw\source\dynList.c" />
+    <ClCompile Include="glfw\source\glapi.c" />
+    <ClCompile Include="glfw\source\hb_glad_gl.c" />
+    <ClCompile Include="glfw\source\init.c" />
+    <ClCompile Include="glfw\source\input.c" />
+    <ClCompile Include="glfw\source\monitor.c" />
+    <ClCompile Include="glfw\source\window.c" />
     <ClCompile Include="harbour\sources\3rd\zlib\adler32.c" />
     <ClCompile Include="harbour\sources\3rd\zlib\compress.c" />
     <ClCompile Include="harbour\sources\3rd\zlib\crc32.c" />
@@ -438,7 +459,9 @@
     <ClCompile Include="harbour\sources\vm\strapi.c" />
     <ClCompile Include="harbour\sources\vm\thread.c" />
     <ClCompile Include="harbour\sources\vm\vm.c" />
+    <ClCompile Include="oleauto.c" />
     <ClCompile Include="test.c" />
+    <ClCompile Include="xhbole.c" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="test.prg">
@@ -446,6 +469,8 @@
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">harbour\bin\harbour -n %(Identity) -Iharbour\include</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">harbour\bin\harbour -n %(Identity) -Iharbour\include -Ic:\harbour_app_msvc64_sources\glfw\include\</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).c</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -457,6 +482,18 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="..\harbour\contrib\hbwin\oleauto.prg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">harbour\bin\harbour -n %(Identity) -Iharbour\include -Ic:\harbour_app_msvc64_sources\glfw\include\</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\harbour\contrib\xhb\xhbole.prg">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">harbour\bin\harbour -n %(Identity) -Iharbour\include -Ic:\harbour_app_msvc64_sources\glfw\include\</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).c</Outputs>
+    </CustomBuild>
+    <None Include="glfw\include\hbglfw.ch" />
     <None Include="harbour\sources\macro\macro.y" />
     <None Include="harbour\sources\macro\macro.yyc" />
     <None Include="harbour\sources\macro\macro.yyh" />
@@ -504,6 +541,8 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="glfw\include\glfw3.h" />
+    <ClInclude Include="glfw\include\hbglfw.h" />
     <ClInclude Include="harbour\sources\3rd\zlib\crc32.h" />
     <ClInclude Include="harbour\sources\3rd\zlib\deflate.h" />
     <ClInclude Include="harbour\sources\3rd\zlib\gzguts.h" />
@@ -521,6 +560,10 @@
     <ClInclude Include="harbour\sources\rtl\sha1hmac.h" />
     <ClInclude Include="harbour\sources\rtl\sha2.h" />
     <ClInclude Include="harbour\sources\rtl\sha2hmac.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="glfw\lib\glfw3.lib" />
+    <Library Include="glfw\lib\hbgl.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
